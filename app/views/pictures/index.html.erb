@@ -5,7 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>Image</th>
+      <th class="title">タイトル</th>
+      <th class="content">内容</th>
+      <th class= "list">Picture</th>
+      <th class="user">user</th>
+      <th class= "created_at">投稿日時</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,6 +17,11 @@
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
+        <td class= "title"><%= picture.title %></td>
+        <td class= "content"><%= picture.content %></td>
+        <td><%= image_tag picture.image.url %></td>
+        <td><%= picture.user.name %></td>
+        <td class= "created_at"><%= l(picture.created_at, format: :short)%></td>
         <td><%= picture.image %></td>
         <td><%= link_to 'Show', picture %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>

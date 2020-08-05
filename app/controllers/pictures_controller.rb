@@ -15,6 +15,11 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   def new
     @picture = Picture.new
+    if params[:back]
+      @picture = Picture.new(picture_params)
+    else
+      @picture = Picture.new
+    end
   end
 
   # GET /pictures/1/edit
@@ -24,7 +29,7 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.picturePicture.build(picture_params)
 
     respond_to do |format|
       if @picture.save
@@ -61,14 +66,24 @@ class PicturesController < ApplicationController
     end
   end
 
+  def confirm
+    @feed = current_user.feeds.build(feed_params)
+    @feed.id = params[:id]
+    @feed.image = params[:image]
+    render :new if @feed.invalid?
+  end
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_picture
-      @picture = Picture.find(params[:id])
-    end
+  def set_picture
+    @picture = Picture.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def picture_params
-      params.require(:picture).permit(:image)
-    end
+  def picture_params
+    params.require(:picture).permit(:id, :image, :image_cache,:user_id,:title,:content)
+  end
 end
