@@ -1,6 +1,9 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-
+  before_action :current_user
+  before_action :logged_in?
+  before_action :authenticate_user
+  before_action :check_user, only: [:edit,:update,:destroy]
   # GET /pictures
   # GET /pictures.json
   def index
@@ -14,7 +17,6 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    @picture = Picture.new
     if params[:back]
       @picture = Picture.new(picture_params)
     else
@@ -29,11 +31,10 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = current_user.picturePicture.build(picture_params)
-
+    @picture = current_user.pictures.build(picture_params)
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+        format.html { redirect_to pictures_path, notice: 'Picture was successfully created.' }
         format.json { render :show, status: :created, location: @picture }
       else
         format.html { render :new }
@@ -67,12 +68,11 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @feed = current_user.feeds.build(feed_params)
-    @feed.id = params[:id]
-    @feed.image = params[:image]
-    render :new if @feed.invalid?
+    @picture = current_user.pictures.build(picture_params)
+    @picture.id = params[:id]
+    @picture.image = params[:image]
+    render :new if @picture.invalid?
   end
-
 
 
 
@@ -86,4 +86,5 @@ class PicturesController < ApplicationController
   def picture_params
     params.require(:picture).permit(:id, :image, :image_cache,:user_id,:title,:content)
   end
+
 end
