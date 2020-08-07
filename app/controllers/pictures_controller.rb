@@ -70,7 +70,6 @@ class PicturesController < ApplicationController
   def confirm
     @picture = current_user.pictures.build(picture_params)
     @picture.id = params[:id]
-    @picture.image = params[:image]
     render :new if @picture.invalid?
   end
 
