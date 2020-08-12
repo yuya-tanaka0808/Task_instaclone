@@ -3,7 +3,7 @@
   <li><%= msg %></li>
 <% end %>
 <p><%= notice %></p>
-<%= form_with(model: @user, local:true) do |form| %>
+<%= form_with(model: @user,url: user_path(@user.id), local:true) do |form| %>
   <div class="user_name">
     <%= form.label :"名前" %>
     <%= form.text_field :name %>
@@ -13,10 +13,13 @@
     <%= form.label :"Email" %>
     <%= form.text_field :email %>
   </div>
-  <br>
   <div class="user_password">
-    <%= form.label :"password" %>
-    <%= form.text_field :password %>
+    <%= form.hidden_field :password, value: @user.password_digest %>
+  </div>
+  <br>
+  <div class="user_image">
+    <%= form.label :"user_image" %>
+    <%= form.file_field :user_image %>
   </div>
   <br>
   <%= form.submit "編集する" %>
