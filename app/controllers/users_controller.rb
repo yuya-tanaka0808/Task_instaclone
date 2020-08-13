@@ -34,7 +34,6 @@ before_action :current_user
 
   private
   def user_params
-    binding.pry
     params.require(:user).permit(:name, :email,:user_image, :user_image_cache, :password, :password_digest, :password_confirmation)
   end
 
