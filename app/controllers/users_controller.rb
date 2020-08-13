@@ -27,6 +27,7 @@ before_action :current_user
       render :edit
     end
   end
+
   def destroy
     @user.destroy
     redirect_to new_user_path,"ユーザー情報を削除しました"
