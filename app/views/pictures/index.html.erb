@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <h1>Pictures</h1>
 
@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th class="title">タイトル</th>
+      <br>
       <th class="content">内容</th>
       <th class= "list">Picture</th>
       <th class="user">user</th>
@@ -22,7 +23,7 @@
         <td><%= image_tag picture.image.url %></td>
         <td><%= picture.user.name %></td>
         <td class= "created_at"><%= l(picture.created_at, format: :short)%></td>
-        <td><%= picture.image %></td>
+        <!-- <td><%= picture.image %></td> -->
         <td><%= link_to 'Show', picture %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
         <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
