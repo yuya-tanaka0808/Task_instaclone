@@ -3,16 +3,17 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
     def authenticate_user
       if @current_user == nil
-
-        redirect_to new_session_path
+      flash[:notice] = "ログインしてください"
+      redirect_to new_session_path
       end
     end
     def check_user
       if current_user.id != @picture.user.id
-        flash[:notice] = "権限がありません"
-        redirect_to feeds_path
+        flash[:notice] =  "権限がありません"
+        redirect_to pictures_path
       end
     end
+
     def current_user
     @current_user ||= User.find_by(id: session[:user_id])
     end

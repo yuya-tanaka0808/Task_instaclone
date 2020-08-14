@@ -1,5 +1,3 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
 <h1>Pictures</h1>
 
 <table>
@@ -24,9 +22,9 @@
         <td><%= picture.user.name %></td>
         <td class= "created_at"><%= l(picture.created_at, format: :short)%></td>
         <!-- <td><%= picture.image %></td> -->
-        <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to I18n.t("helpers.select.show"), picture %></td>
+        <td><%= link_to I18n.t("helpers.submit.edit"), edit_picture_path(picture) %></td>
+        <td><%= link_to I18n.t("helpers.submit.destroy"), picture, method: :delete, data: { confirm: '本当に削除してもいいですか？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Picture', new_picture_path %>
+<%= link_to '新規投稿', new_picture_path %>
