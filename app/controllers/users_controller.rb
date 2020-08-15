@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 before_action :find_user, only:[:show, :edit, :update,:destroy,:favorites]
 before_action :current_user
-before_action :check_user
+before_action :user_checker, only: [:edit,:update,:destroy,:show]
   def new
     @user = User.new
   end
@@ -44,5 +44,11 @@ before_action :check_user
 
   def find_user
     @user = User.find(params[:id])
+  end
+  def user_checker
+    if current_user.id != @user.id
+      flash[:notice] =  "権限がありません"
+      redirect_to pictures_path
+    end
   end
 end
