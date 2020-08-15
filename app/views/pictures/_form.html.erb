@@ -25,7 +25,7 @@
 
     <div class="image">
       <%= form.label :image %>
-      <%= image_tag(@picture.image.url)if @picture.image && @picture.image.url %>
+      <!-- <%= image_tag(@picture.image.url)if @picture.image && @picture.image.url %> -->
       <%= form.file_field :image %>
       <%= form.hidden_field :image_cache %>
     </div>

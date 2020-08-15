@@ -17,16 +17,18 @@
         <span class="sr-only">Bootstrap</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/pictures">Pictagram
       </a>
     </div>
     <div id="gnavi" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/pictures">Pictures</a></li>
-        <li><a href="/pictures/new">New Pictures</a></li>
-        <li><a href="/">Favorite</a></li>
+        <li>
+          <%= link_to "Pictures", "/pictures" %>
+        </li>
+        <li>
+         <%= link_to "New Pictures", "/pictures/new" %>
+        </li>
       </ul>
     </div>
   </div>

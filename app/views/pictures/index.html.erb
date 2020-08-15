@@ -1,35 +1,24 @@
 <h1>Pictures</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th class="title">タイトル</th>
-      <br>
-      <th class="content">内容</th>
-      <th class= "list">Picture</th>
-      <th class="user">user</th>
-      <th class= "created_at">投稿日時</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @pictures.each do |picture| %>
-      <tr>
-        <td class= "title"><%= picture.title %></td>
-        <td class= "content"><%= picture.content %></td>
-        <td><%= image_tag picture.image.url %></td>
-        <td><%= picture.user.name %></td>
-        <td class= "created_at"><%= l(picture.created_at, format: :short)%></td>
+        <%= picture.user.name %>
+        <br>
+        <%= picture.title %>
+        <br>
+        <%= image_tag picture.image.url, size: '400x640'%>
+        <br>
+        <%= picture.content %>
+        <br>
+        <%= l(picture.created_at, format: :short)%>
         <!-- <td><%= picture.image %></td> -->
-        <td><%= link_to I18n.t("helpers.select.show"), picture %></td>
-        <td><%= link_to I18n.t("helpers.submit.edit"), edit_picture_path(picture) %></td>
-        <td><%= link_to I18n.t("helpers.submit.destroy"), picture, method: :delete, data: { confirm: '本当に削除してもいいですか？' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+        <br>
+        <%= link_to I18n.t("helpers.select.show"), picture %>
+        <%= link_to I18n.t("helpers.submit.edit"), edit_picture_path(picture) %>
+        <%= link_to I18n.t("helpers.submit.destroy"), picture, method: :delete, data: { confirm: '本当に削除してもいいですか？' } %>
+        <br>
+        <br>
+        <br>
+     <% end %>
 <br>
 
 <%= link_to '新規投稿', new_picture_path %>

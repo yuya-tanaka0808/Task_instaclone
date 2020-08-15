@@ -1,5 +1,8 @@
+<div class="profile">
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
-<p>アイコン：<%=  image_tag @user.user_image.url %></p>
+<p><%=  image_tag @user.user_image.url, size: '100x100'%></p>
+</div>
+<%= link_to 'お気に入り一覧', "/users/#{@user.id}/favorites" %>
 <%= link_to "編集する", edit_user_path(@user.id) %>
 <%= link_to '削除する', new_session_path, method: :delete, data: { confirm: '本当に削除してもいいですか？' }%>

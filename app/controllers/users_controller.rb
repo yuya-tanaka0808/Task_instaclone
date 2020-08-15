@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-before_action :find_user, only:[:show, :edit, :update,:destroy]
+before_action :find_user, only:[:show, :edit, :update,:destroy,:favorites]
 before_action :current_user
-
+before_action :check_user
   def new
     @user = User.new
   end
@@ -15,6 +15,10 @@ before_action :current_user
   end
 
   def show
+  end
+
+  def favorites
+    @favorites = Favorite.where(user_id: @user.id)
   end
 
   def edit

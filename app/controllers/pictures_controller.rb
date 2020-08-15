@@ -4,6 +4,7 @@ class PicturesController < ApplicationController
   before_action :logged_in?
   before_action :authenticate_user
   before_action :check_user, only: [:edit,:update,:destroy]
+  before_action :check_user
   # GET /pictures
   # GET /pictures.json
   def index
