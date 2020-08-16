@@ -7,6 +7,7 @@ module DiveIntoWork
     config.active_record.default_timezone = :local
     config.i18n.available_locales = %i[ja en]
     config.i18n.default_locale = :ja
+    config.assets.initialize_on_precompile = false
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.generators do |g|
