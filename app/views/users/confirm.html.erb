@@ -4,9 +4,6 @@
   <p>NAME：<%= @user.neme %></p>
   <%= form.hidden_field :content %>
   <p>Email：<%= @user.email %></p>
-  <div class="user">
-  </div>
-  <!-- 確認画面でアップロードした画像を表示させるための記述 -->
   <div class="image">
     <p>user_imege</p>
     <%= image_tag(@user.user_image.url) if @user.user_image && @user.user_image.url %>
