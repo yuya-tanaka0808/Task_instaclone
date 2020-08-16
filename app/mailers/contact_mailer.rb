@@ -1,6 +1,6 @@
 class ContactMailer < ApplicationMailer
-  def contact_mail(contact)
-    @contact = contact
-    mail to: "yuya.tanaka0808.w@gmail.com", subject: "お問い合わせの確認メール"
+  def contact_mail(picture)
+    @picture = picture
+    mail to: "yuya.tanaka0808.w@gmail.com", subject: "投稿確認メール"
   end
 end
