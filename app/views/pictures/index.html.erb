@@ -1,27 +1,29 @@
 <h1>Pictures</h1>
-
-    <% @pictures.each do |picture| %>
-        <%= image_tag picture.user.user_image.url, size: '50x50' %>
-        <%= picture.user.name %>
-        <br>
-        <%= picture.title %>
-        <br>
-        <%= image_tag picture.image.url, size: '400x640'%>
-        <br>
-        <%= picture.content %>
-        <br>
-        <%= l(picture.created_at, format: :short)%>
-        <!-- <td><%= picture.image %></td> -->
-        <br>
-        <%= link_to I18n.t("helpers.select.show"), picture %>
-        <% if  @user == current_user %>
-        <%= link_to I18n.t("helpers.submit.edit"), edit_picture_path(picture) %>
-        <%= link_to I18n.t("helpers.submit.destroy"), picture, method: :delete, data: { confirm: '本当に削除してもいいですか？' } %>
-        <% end %>
-        <br>
-        <br>
-        <br>
-     <% end %>
-<br>
-
-<%= link_to '新規投稿', new_picture_path %>
+  <% @pictures.each do |picture| %>
+    <div class="post">
+      <%= image_tag picture.user.user_image.url, size: '50x50' %>
+      <%= picture.user.name %>
+      <br>
+      <%= picture.title %>
+      <br>
+      <%= image_tag picture.image.url, size: '614x985'%>
+      <br>
+      <%= picture.content %>
+      <br>
+      <%= l(picture.created_at, format: :short)%>
+      <!-- <td><%= picture.image %></td> -->
+      <br>
+      <%= link_to I18n.t("helpers.select.show"), picture %>
+      <% if current_user.id == picture.user.id %>
+      <%= link_to I18n.t("helpers.submit.edit"), edit_picture_path(picture) %>
+      <%= link_to I18n.t("helpers.submit.destroy"), picture, method: :delete, data: { confirm: '本当に削除してもいいですか？' } %>
+      <% end %>
+      <br>
+    </div>
+    <br>
+    <br>
+  <% end %>
+  <br>
+  <div class="link">
+    <%= link_to '新規投稿', new_picture_path %>
+  </div>
