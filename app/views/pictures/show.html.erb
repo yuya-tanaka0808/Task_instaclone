@@ -22,7 +22,7 @@
     <% end %>
     <% if current_user.id == @picture.user.id %>
       <%= link_to '編集', edit_picture_path(@picture) %>
-      <%= link_to '削除', pictures_path, method: :delete, data: { confirm: '本当に削除してもいいですか？' } %>
+      <%= link_to '削除', picture_path, method: :delete, data: { confirm: '本当に削除してもいいですか？' } %>
     <% end %>
     <%= link_to '一覧へ戻る', pictures_path%>
   </div>
