@@ -12,7 +12,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1
   # GET /pictures/1.json
-   def show
+  def show
     @favorite = current_user.favorites.find_by(picture_id: @picture.id)
   end
 
@@ -35,7 +35,7 @@ class PicturesController < ApplicationController
     @picture = current_user.pictures.build(picture_params)
     respond_to do |format|
       if @picture.save
-        PictureMailer.picture_mail(@picture).deliver
+        # PictureMailer.picture_mail(@picture).deliver
         format.html { redirect_to pictures_path, notice: '投稿しました' }
         format.json { render :show, status: :created, location: @picture }
       else
@@ -74,8 +74,6 @@ class PicturesController < ApplicationController
     @picture.id = params[:id]
     render :new if @picture.invalid?
   end
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
