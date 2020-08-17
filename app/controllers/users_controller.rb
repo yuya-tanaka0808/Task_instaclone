@@ -8,7 +8,7 @@ before_action :user_checker, only: [:edit,:update,:destroy,:show]
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user.id)
+      redirect_to new_session_path
     else
       render :new
     end
