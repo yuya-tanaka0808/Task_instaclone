@@ -20,5 +20,6 @@ module PicturesHelper
       # render confirm_picture_path(@picture.id)
       picture_path
     end
+  end
 
 end
