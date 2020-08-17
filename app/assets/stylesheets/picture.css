@@ -1,3 +1,6 @@
+body{
+  background-color: #EEEEEE;
+}
 h1{
   text-align: center;
 }
@@ -6,6 +9,7 @@ h1{
   border-color: gray;
   width: 616px;
   margin:auto;
+  background-color: white;
 }
 .link {
   text-align: center;
