@@ -2,7 +2,6 @@
   <div class="link">
     <%= image_tag "#{@user.user_image}", size: '200x200'%>
   </div>
-
     <% @favorites.each do |favorite| %>
     <div class="post">
       <% picture = Picture.find_by(id: favorite.picture_id) %>
@@ -17,6 +16,7 @@
       </div>
       <br>
     <% end %>
-
-  <br>
-  <%= link_to '投稿一覧へ', pictures_path %>
+    <br>
+    <div class="link">
+      <%= link_to '投稿一覧へ', pictures_path %>
+    </div>

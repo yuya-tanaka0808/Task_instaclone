@@ -10,7 +10,7 @@
     <p>内容: <%= @picture.content %></p>
     <p>投稿日時：<%= @picture.created_at %></p>
 
-    <%= l(picture.created_at, format: :short)%>
+    <%= l(@picture.created_at, format: :short)%>
   </div>
   <div class="link">
     <% unless @picture.user_id == current_user.id %>

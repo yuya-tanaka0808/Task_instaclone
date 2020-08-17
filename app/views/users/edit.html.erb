@@ -4,23 +4,38 @@
 <% end %>
 <p><%= notice %></p>
 <%= form_with(model: @user,url: user_path, local:true) do |form| %>
+<div class="link">
+<table>
   <div class="user_name">
-    <%= form.label :"名前" %>
-    <%= form.text_field :name %>
+    <tr>
+      <th><%= form.label :"名前" %></th>
+      <td><%= form.text_field :name %></td>
+    </tr>
   </div>
   <br>
   <div class="user_email">
-    <%= form.label :"Email" %>
-    <%= form.text_field :email %>
+    <tr>
+      <th><%= form.label :"Email" %></th>
+      <td><%= form.text_field :email %></td>
+    </tr>
   </div>
+  <br>
+  <div class="image">
+    <tr>
+      <th><%= form.label :"image" %></th>
+      <td><%= form.file_field :user_image %></td>
+    </tr>
+  </div>
+  <br>
   <div class="user_password">
-    <%= form.hidden_field :password, value: @user.password_digest %>
+    <tr>
+      <th><p>変更するためにはパスワードが必要です</p></th>
+      <td><%= form.text_field :password%></td>
+    <!-- value: @user.password_digest -->
+    </tr>
   </div>
-  <br>
-  <div class="user_image">
-    <%= form.label :"image" %>
-    <%= form.file_field :user_image %>
-  </div>
-  <br>
+</table>
+<br>
   <%= form.submit "編集する" %>
-<% end %>
+  <% end %>
+</div>
